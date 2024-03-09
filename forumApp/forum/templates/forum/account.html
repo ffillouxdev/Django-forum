@@ -3,22 +3,27 @@
 {% load tailwind_tags %}
 
 {% block content %}
-<div class="div-user">
-  <div class="div-user-picture">
-    {% if user.profile_picture %}
-    <img id="perso-profile" src="{{ user.profile_picture.url }}" alt="Profile picture">
-    {% else %}
-      <img src="{% static 'assets/User.png' %}" alt="Default profile picture">
-    {% endif %}
+<main class="flex items-center justify-center h-full">
+  <div class="user-card border-2 rounded-lg p-5 w-full max-w-md">
+    <div class="user-picture mb-7 flex items-center justify-center">
+      {% if user.profile_picture %}
+      <img src="{{ user.profile_picture.url }}" alt="Profile picture"
+        class="rounded-full border-2 border-black object-cover h-40 w-40">
+      {% else %}
+      <img src="{% static 'assets/User.png' %}" alt="Default profile picture"
+        class="rounded-full border-2 border-black object-cover h-40 w-40">
+      {% endif %}
+    </div>
+    <hr class="mb-7 border-gray-300 w-full">
+    <div class="user-content">
+      <p><a href="{% url 'password_change' %}" class="block text-center">Change Password</a></p>
+      <p><a href="{% url 'change-profile' %}" class="block text-center">Edit Profile</a></p>
+      <form action="{% url 'logout' %}" method="post" class="flex items-center justify-center">
+        {% csrf_token %}
+        <button type="submit"
+          class="w-1/2 mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Logout</button>
+      </form>
+    </div>
   </div>
-  <hr>
-  <div class="div-user-content">
-    <p><a href="{% url 'password_change' %}">Do you want to change your password?</a></p>
-    <p><a href="{% url 'change-profile' %}">Modify my Profile</a></p>
-    <form action="{% url 'logout' %}" method="post">
-      {% csrf_token %}
-      <button type="submit">Logout</button>
-    </form>
-  </div>
-</div>
+</main>
 {% endblock content %}

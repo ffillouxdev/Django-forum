@@ -2,15 +2,15 @@
 {% load tailwind_tags %}
 
 {% block content %}
-<main>
-  <div class="div-changeprofile">
-    <h3>Update Profile</h3>
-    <hr>
-    <form method="POST" enctype="multipart/form-data">
+<main class="flex items-center justify-center h-full">
+  <div class="user-card border-2 rounded-lg p-5 w-full max-w-md">
+    <h3 class="text-center mb-4">Update Profile</h3>
+    <hr class="mb-4">
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Update</button>
+      <button type="submit" class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600">Update</button>
     </form>
   </div>
 </main>
-{% endblock content%}
+{% endblock content %}
