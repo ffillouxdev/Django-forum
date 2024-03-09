@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<div class="div-user">
+  <div class="div-user-picture">
+    {% if user.profile_picture %}
+    <img id="perso-profile" src="{{ user.profile_picture.url }}" alt="Profile picture">
+    {% else %}
+      <img src="{% static 'assets/User.png' %}" alt="Default profile picture">
+    {% endif %}
+  </div>
+  <hr>
+  <div class="div-user-content">
+    <p><a href="{% url 'password_change' %}">Do you want to change your password?</a></p>
+    <p><a href="{% url 'change-profile' %}">Modify my Profile</a></p>
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Logout</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

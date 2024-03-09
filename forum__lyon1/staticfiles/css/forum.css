@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: 0 10%;
+}
+
+/*Bloc topic of the moment*/
+.top-forum {
+  width: 40%; /* ou 50% ou 60% */
+  max-width: 470px;
+  height: 250px;
+  background-color: gray;
+  margin-left: 1%;
+  border: 2px solid black;
+  color: whitesmoke;
+  box-shadow: 11px 9px 15px 5px #000000;
+  }
+.top-forum hr {
+  margin-top: 8%;
+}
+
+.top-forum h3{
+  text-align: center;
+}
+
+.top-forum a{
+  text-decoration: none;
+  color : whitesmoke;
+  
+}
+.top-forum a:hover{
+  color: #DD7B0F;
+  text-decoration: underline;
+}
+
+
+.sections-topics {
+  width: 180%;
+  height: 250px;
+  background-color: gray;
+  padding-top: 1%;
+  margin-right: 10%;
+  border: 2px solid black;    
+  color: whitesmoke;
+  box-shadow: 11px 9px 15px 5px #000000;
+}
+
+.sections-topics hr {
+  border-color: whitesmoke;
+}
+
+.sections-topics h3{
+  text-align: center;
+}
+.sections-topics a{
+  margin-left: 10%;
+  color: whitesmoke;
+  text-decoration: none;
+}
+.sections-topics a:hover{
+  color: #DD7B0F;
+  text-decoration: underline;
+}
+
+.create-forumdisc{
+  padding: 7%;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  }
+
+.create-forumdisc a {
+  background-color: gray;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+@media(max-width: 400px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .top-forum,
+  .sections-topics {
+      margin: 1% 0;
+      width: 100%;
+  }
+
+  .sections-topics {
+      width: 100%;
+      margin-right: 0;
+  }
+}
+  

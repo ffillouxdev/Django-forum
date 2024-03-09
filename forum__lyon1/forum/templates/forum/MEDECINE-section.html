@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}MEDECINE{% endblock %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<main class="container mx-auto flex align-center flex-col h-full justify-center">
+    <div class="div-MEDECINE-section">
+        <h2>Section: {{ section }}</h2>
+        <hr>
+        {% if topics %}
+            <ul>
+                {% for topic in topics %}
+                    <li>
+                        <a href="{% url 'topic-detail' slug=topic.slug %}">{{ topic.title }}</a> 
+                        <br>
+                        <p>Created by {{ topic.author.username }} on {{ topic.created_at }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p id="notop">No topics found.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

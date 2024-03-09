@@ -1,0 +1,15 @@
+.div-changeprofile{
+    background-color: gray;
+    text-align: left;
+    width: 90%;
+    max-width: 470px;
+    height: 350px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    box-shadow: 11px 9px 15px 5px #000000;
+    text-align: center;
+}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ topic.title }}{% endblock %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<main class="container mx-auto flex align-center flex-col h-full justify-center">
+    <div class="div-topic">
+        <h2>Sujet : {{ topic.title }}</h2>
+        <div class="topic-content">
+            <p id="create"> Created by {{ topic.author.username }} on "{{ topic.created_at }}"</p>  
+            <hr>
+            <p>{{ topic.description }}</p>
+        </div>
+        <br>
+        <div class="replies">
+            {% for reply in topic.replies.all %}
+                <div class="reply">
+                    <hr>
+                    <p id="reply">On "{{reply.created_at}}" {{ reply.author.username }} said:</p>
+                    <p>{{ reply.text }}</p>
+                </div>
+                {% empty %}
+                    <p>No replies yet.</p>
+                {% endfor %}
+        </div>
+        <br>
+        <div class="reply-textearea">
+            <h3>Reply</h3>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Reply">
+            </form>
+        </div>
+        <hr>
+        <div class="main-forum">
+            <p>
+                <a href="{% url 'home'%}">Return at the list of topics</a>
+                |
+                <a href="{% url 'create-ftopic' %}">Create a new topic</a>
+            </p>
+        </div>
+    </div>  
+</main>
+{% endblock %}

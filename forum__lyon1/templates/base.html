@@ -1,0 +1,74 @@
+{% load static %}
+{% load tailwind_tags %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now 'U' %}">
+    <title>University Forum</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    {% tailwind_css %}
+</head>
+
+<body>
+    <nav class="navbar bg-transparent flex flex-row items-center absolute w-full z-10">
+        <div class="nav-logo flex-grow">
+            <a href="#" target="_blank"><box-icon name='chat' class="h-10 w-10"></box-icon></a>
+        </div>
+        <div class="nav-ul-right flex flex-row w-50 mr-4">
+            <ul class="h-ful">
+                <li>
+                    <a href="{% url 'home' %}"
+                        class="text-white hover:text-gray-900 mr-4 text-xl text-shadow-black">Home</a>
+                </li>
+            </ul>
+            <ul class="account h-full">
+                <li class="account">
+                    <a href="{% url 'account' %}"
+                        class="flex items-center text-white text-xl hover:text-gray-30 text-shadow-black hover:text-gray-900">
+                        Account
+                        <img src="{% static 'assets/account_icon.png' %}?{% now 'U' %}" alt="account-icon"
+                            class="h-6 w-6 ml-2">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="content-div">
+            {% block extra_css %}{% endblock %}
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto flex flex-col items-center justify-center">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-4">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-semibold text-center">University Forum</h3>
+                    <p class="text-sm">A platform for academic discussions</p>
+                </div>
+
+            </div>
+            <hr class="bg-white w-1/2 mb-4">
+            <div class="flex items-center">
+                <a href="#" class="text-gray-400 hover:text-gray-200 mr-4">
+                    About Us
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-200 mr-4">
+                    Contact Us
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-200">
+                    Privacy Policy
+                </a>
+            </div>
+            <div>
+                <p class="text-sm m-1">&copy; 2024 University Forum. All rights reserved.</p>
+                <p class="text-center mt-3">You are logged in as {{ user }}.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+.div-user {
+    background-color: gray;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    box-shadow: 11px 9px 15px 5px #000000;
+  }
+  
+  .div-user-picture{
+    background-color: darkgray;
+    border-radius: 50%;
+    border: 2px solid black;
+    width: 80%;
+    max-width: 256px;
+    text-align: center;
+    padding: 5%;
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .div-user-picture img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  
+  .div-user-content a,p{
+    color: white;
+    text-decoration: none;
+  }
+  
+  .div-user-content p:hover{
+    color: #DD7B0F;
+    text-decoration: underline;
+  }
+  
+  .div-user-content a:hover{
+    color: #DD7B0F;
+    text-decoration: underline;
+  }
+  
+  @media (min-width: 768px) {
+    .div-user {
+      width: 30%;
+    }
+  }
+  

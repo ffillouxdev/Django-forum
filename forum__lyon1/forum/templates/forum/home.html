@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<main class="container mx-auto flex align-center flex-col h-full justify-center">
+    <h1 id="UF" class="text-4xl text-center my-8 mb-10">University Forum</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white shadow-md rounded p-6">
+            <h3 class="text-xl font-semibold mb-4">Topics of the Moment</h3>
+            <ol>
+                {% for topic in topics %}
+                <li>{% if forloop.counter <= 5 %}<a href="/topic/{{ topic.slug }}/" class="text-blue-500 hover:underline">{{ topic.title }}</a>{% else %}{{ topic.title }}{% endif %} - {{ topic.reply_count }} replies</li>
+                {% endfor %}
+            </ol>
+            <hr class="my-4">
+            <div class="text-center">
+                <a href="{% url 'create-ftopic' %}" class="text-blue-500 hover:underline">Create a new forum topic</a>
+            </div>
+        </div>
+        <div class="bg-white shadow-md rounded p-6">
+            <h3 class="text-xl font-semibold mb-4">Sections</h3>
+            <ul>
+                <li><a href="{% url 'IT-section' %}" class="text-blue-500 hover:underline">IT</a></li>
+                <li><a href="{% url 'MATH-section' %}" class="text-blue-500 hover:underline">Mathematics</a></li>
+                <li><a href="{% url 'PHYS-section' %}" class="text-blue-500 hover:underline">Physics</a></li>
+                <li><a href="{% url 'MEDECINE-section' %}" class="text-blue-500 hover:underline">Medecine</a></li>
+                <li><a href="{% url 'SOCIOLOGY-section' %}" class="text-blue-500 hover:underline">Sociology</a></li>
+            </ul>
+            <hr class="my-4">
+            <div class="text-center">
+                <a href="{% url 'miscellaneous-topics' %}" class="text-blue-500 hover:underline">Miscellaneous Topics</a>
+            </div>
+        </div>
+        <div class="bg-white shadow-md rounded p-6">
+            <h3 class="text-xl font-semibold mb-4">Your Personal Connections</h3>
+            <hr class="my-4">
+            <ul>
+                <li><a href="#" class="text-blue-500 hover:underline">Florian</a> - send you 1 message.</li>
+                <li><a href="#" class="text-blue-500 hover:underline">Alibaba</a> - send you 4 messages.</li>
+                <li><a href="#" class="text-blue-500 hover:underline">Leo</a> - send you 2 messages.</li>
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock %}

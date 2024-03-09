@@ -1,0 +1,12 @@
+{% load tailwind_tags %}
+
+<div class="max-w-lg mx-auto">
+  {% autoescape off %}
+  <p class="text-lg">To initiate the password reset process for your {{ user.get_username }} TestSite Account, click the link below:</p>
+  <p class="text-blue-500 font-semibold my-2">
+    <a href="{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}" class="hover:underline">{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}</a>
+  </p>
+  <p class="text-lg">If clicking the link above doesn't work, please copy and paste the URL in a new browser window instead.</p>
+  <p class="text-lg">Sincerely,<br>The Lyon1 forum Team.</p>
+  {% endautoescape %}
+</div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<main class="container mx-auto flex align-center flex-col h-full justify-center">
+    <div class="div-MISCELLANOS-section">
+            <h2>All and nothing</h2>
+            <hr>
+            <p>Here  you can talk about any subject you want (games, sports, meetings, student problems) !</p> 
+            {% if topics %}
+            <ul>
+                {% for topic in topics %}
+                <li>
+                    <a href="{% url 'topic-detail' slug=topic.slug %}">{{ topic.title }}</a> 
+                    <br>
+                    <p>Created by {{ topic.author.username }} on {{ topic.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p id="notop">No topics found.</p>
+        {% endif %}
+    </div>
+</main>
+
+{% endblock %}

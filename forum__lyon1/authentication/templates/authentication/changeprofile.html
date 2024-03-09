@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load tailwind_tags %}
+
+{% block content %}
+<main>
+  <div class="div-changeprofile">
+    <h3>Update Profile</h3>
+    <hr>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
+</main>
+{% endblock content%}
