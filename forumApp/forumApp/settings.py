@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'forumApp.settings')
 
 # Application definition
 
@@ -65,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'forum__lyon1.urls'
+ROOT_URLCONF = 'forumApp.urls'
 
 TEMPLATES = [
     {
@@ -85,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'forum__lyon1.wsgi.application'
+WSGI_APPLICATION = 'forumApp.wsgi.application'
 
 
 # Database
