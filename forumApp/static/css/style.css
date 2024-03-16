@@ -41,3 +41,90 @@ body {
 .slideRighttoLeft3 {
   animation: slideRighttoLeft 2.5s ease-in-out;
 }
+
+main {
+  height: calc(100vh - 4rem);
+  width: 100%;
+  min-height: 95vh;
+}
+
+.bg-img-first_section {
+  background-image: url("{% static 'assets/bghome.jpg' %}");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom: 2%;
+}
+
+.bg-img-first_section h1 {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  margin-top: 7%;
+}
+
+.whereAreYou {
+  margin-top: -2%;
+}
+
+form {
+  margin-bottom: 2%;
+}
+
+form label {
+  display: none;
+}
+
+form input {
+  width: 95%;
+  margin-left: 2.5%;
+}
+
+form textarea {
+  display: block;
+  margin-left: 2.5%;
+  width: 95%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.createT input,
+textarea {
+  margin-bottom: 0.5%;
+}
+
+.createT .section-select {
+  margin-left: 2.5%;
+  margin-top: 0.5%;
+}
+
+#create-button {
+  width: 75%;
+  margin-top: 1%;
+  margin-left: 12.5%;
+}
+
+.replies {
+  min-height: 500px;
+  overflow-y: auto;
+}
+
+.reply {
+  margin-bottom: 1rem;
+}
+
+.user-content {
+  margin-right: 10%;
+}
+
+.profile-card {
+  padding-top: 2%;
+  padding: 3.7%;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

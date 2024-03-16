@@ -4,69 +4,92 @@
 
 {% block extra_css %}
 <style>
-    main {
-        height: 110vh;
-    }
-
     .bg-img-first_section {
         background-image: url("{% static 'assets/bghome.jpg' %}");
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        margin-bottom: 2%;
-    }
-
-    .bg-img-first_section h1 {
-        color: white;
-        text-shadow: 2px 2px 4px #000000;
-        margin-top: 7%;
     }
 </style>
 {% endblock extra_css %}
 
 {% block content %}
-<main class="container mx-auto flex align-center flex-col h-full justify-center">
-    <div class="bg-img-first_section h-1/3 bg-blue-500 w-full border-black border-2">
-        <h1 id="UF" class="text-4xl text-center">University Forum</h1>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white shadow-md rounded p-6 slideRighttoLeft1">
-            <h3 class="text-xl font-semibold mb-4">Topics of the Moment</h3>
-            <ol>
-                {% for topic in topics %}
-                <li>{% if forloop.counter <= 5 %}<a href="/topic/{{ topic.slug }}/"
-                        class="text-blue-500 hover:underline">{{ topic.title }}</a>{% else %}{{
-                        topic.title}}{%endif%}-{{ topic.reply_count }} replies</li>
-                {% endfor %}
-            </ol>
-            <hr class="my-4">
-            <div class="text-center">
-                <a href="{% url 'create-ftopic' %}" class="text-blue-500 hover:underline">Create a new forum topic</a>
+<main class="bg-gradient-to-r from-blue-500">
+    <div class="container mx-auto flex flex-col h-full">
+        <div class="bg-img-first_section h-64 flex items-center flex-col justify-start">
+            <h1 id="UF" class="text-4xl text-center ">University Forum</h1>
+            <div class="flex flex-row h-10 mt-10 mg-0">
+                <input type="text" placeholder="search a topic" name="searchbar" class="searchbar h-full rounded-l-sm">
+                <button class="bg-blue-500 w-10 hover:bg-blue-600 rounded-l-sm transition duration-300"><box-icon
+                        name='search'></box-icon></button>
             </div>
         </div>
-        <div class="bg-white shadow-md rounded p-6 slideRighttoLeft2">
-            <h3 class="text-xl font-semibold mb-4">Sections</h3>
-            <ul>
-                <li><a href="{% url 'IT-section' %}" class="text-blue-500 hover:underline">IT</a></li>
-                <li><a href="{% url 'MATH-section' %}" class="text-blue-500 hover:underline">Mathematics</a></li>
-                <li><a href="{% url 'PHYS-section' %}" class="text-blue-500 hover:underline">Physics</a></li>
-                <li><a href="{% url 'MEDECINE-section' %}" class="text-blue-500 hover:underline">Medecine</a></li>
-                <li><a href="{% url 'SOCIOLOGY-section' %}" class="text-blue-500 hover:underline">Sociology</a></li>
-            </ul>
-            <hr class="my-9">
-            <div class="text-center">
-                <a href="{% url 'miscellaneous-topics' %}" class="text-blue-500 hover:underline">Miscellaneous
-                    Topics</a>
+        <div class="whereAreYou w-full bg-gray-800 h-20 flex items-center justify-between px-6">
+            <p class="text-white hover:text-gray-200">
+                <a href="/home" class="font-bold hover:underline">home</a> &gt;
+                <a href="/topic/{{ topic.slug }}/" class="font-bold hover:text-gray-200">{{ topic.title }}</a>
+            </p>
+
+            <div class="hidden md:flex items-center">
+                <a href="{% url 'create-ftopic' %}" class="text-white hover:text-gray-200">Create a new topic</a>
             </div>
         </div>
-        <div class="bg-white shadow-md rounded p-6 slideRighttoLeft3">
-            <h3 class="text-xl font-semibold mb-4">Your Personal Connections</h3>
-            <hr class="my-4">
-            <ul>
-                <li><a href="#" class="text-blue-500 hover:underline">Florian</a> - send you 1 message.</li>
-                <li><a href="#" class="text-blue-500 hover:underline">Alibaba</a> - send you 4 messages.</li>
-                <li><a href="#" class="text-blue-500 hover:underline">Leo</a> - send you 2 messages.</li>
-            </ul>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center mt-8 mx-4">
+            <div class="bg-white shadow-md rounded p-6 slideRighttoLeft1">
+                <h3 class="text-xl font-semibold mb-4">Topics of the Moment</h3>
+                <ol>
+                    {% for topic in topics %}
+                    {% if forloop.counter <= 6 %} <li class="mb-2">
+                        <a href="/topic/{{ topic.slug }}" class="text-blue-500 hover:underline">{{ topic.title }}</a> -
+                        {{ topic.reply_count }} replies
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                </ol>
+                <hr class="my-4">
+                <div class="text-center">
+                    <a href="{% url 'create-ftopic' %}" class="text-blue-500 hover:underline">Create a new forum
+                        topic</a>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-md rounded p-6 slideRighttoLeft2 flex flex-col justify-between h-full">
+                <h3 class="text-xl font-semibold mb-4">Sections</h3>
+                <ul class="list-none pl-4">
+                    <li>
+                        <a href="{% url 'IT-section' %}" class="text-blue-500 hover:underline">IT</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'MATH-section' %}" class="text-blue-500 hover:underline">Mathematics</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'PHYS-section' %}" class="text-blue-500 hover:underline">Physics</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'MEDECINE-section' %}" class="text-blue-500 hover:underline">Medicine</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'SOCIOLOGY-section' %}" class="text-blue-500 hover:underline">Sociology</a>
+                    </li>
+                </ul>
+                <div class="text-center mt-auto">
+                    <hr class="my-4">
+                    <a href="{% url 'miscellaneous-topics' %}" class="text-blue-500 hover:underline">Miscellaneous
+                        Topics</a>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded p-6 slideRighttoLeft3">
+                <h3 class="text-xl font-semibold mb-4">Your Personal Connections</h3>
+                <hr class="my-4">
+                <ul class="list-none pl-4">
+                    <li>
+                        <a href="#" class="text-blue-500 hover:underline">Florian</a> - sent you 1 message.
+                    </li>
+                    <li>
+                        <a href="#" class="text-blue-500 hover:underline">Alibaba</a> - sent you 4 messages.
+                    </li>
+                    <li>
+                        <a href="#" class="text-blue-500 hover:underline">Leo</a> - sent you 2 messages.
+                </ul>
+            </div>
         </div>
     </div>
 </main>

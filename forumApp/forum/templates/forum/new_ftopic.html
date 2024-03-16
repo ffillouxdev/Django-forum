@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load tailwind_tags %}
-
+{% block extra_css %}
+<style>
+    .bg-img-first_section {
+        background-image: url("{% static 'assets/bghome.jpg' %}");
+    }
+</style>
+{% endblock extra_css %}
 {% block content %}
 <main class="container mx-auto flex align-center flex-col h-full justify-center">
-    <div class="div-new-topic">
-        <h2>Create a new forum topic</h2>
-        <hr>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input id="create-button" type="submit" value="Create">
-        </form>
+    <div class="container mx-auto flex flex-col h-full">
+        <div class="bg-img-first_section h-64 flex items-center flex-col justify-start">
+            <h1 id="UF" class="text-4xl text-center text-white">University Forum</h1>
+            <div class="flex flex-row h-10 mt-10 pb-11">
+                <input type="text" placeholder="search a topic" name="searchbar" class="hidden">
+            </div>
+        </div>
+        <div class="whereAreYou w-full bg-gray-800 h-20 flex items-center justify-between px-6">
+            <p class="text-white hover:text-gray-200">
+                <a href="/home" class="hover:text-gray-200 hover:underline">home</a> &gt;
+                <a href="/new-topic/" class="font-bold hover:text-gray-200">new-topic</a>
+            </p>
+            <div class="hidden md:flex items-center">
+                <a href="{% url 'home' %}" class="text-white hover:text-gray-200">Return at the list of topics</a>
+            </div>
+        </div>
+        <div class="div-new-topic bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Create a new forum topic</h2>
+            <hr class="mb-4">
+            <form class="createT" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" id="create-button"
+                    class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md ml-5 votre-classe-css">Create</button>
+            </form>
+        </div>
     </div>
 </main>
 {% endblock content %}
-
-

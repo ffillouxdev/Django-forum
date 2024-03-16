@@ -38,7 +38,24 @@ def new_ftopic(request):
 @login_required
 def topic_detail(request, slug):
     topic = get_object_or_404(Topic, slug=slug)
-
+    sectionTopic = topic.section.split()[0]
+    
+    #comparer les sections du topic avec les sections de la base de données
+    if sectionTopic == 'IT':
+        section = 'IT'
+    elif sectionTopic == 'MATH':
+        sectionTopic = 'Math'
+        section = 'MATH'
+    elif sectionTopic == 'PHYS':
+        section = 'Physics'
+    elif sectionTopic == 'Medicine':
+        section = 'MEDECINE'
+    elif sectionTopic == 'Sociology':
+        section = 'SOCIOLOGY'
+    else:
+        sectionTopic = 'Miscellaneous'
+        section = 'Miscellaneous'
+    
     if request.method == 'POST':
         form = forms.ReplyTopicForm(request.POST)
         if form.is_valid():
@@ -51,7 +68,7 @@ def topic_detail(request, slug):
     else:
         form = forms.ReplyTopicForm()
 
-    return render(request, 'forum/topic_detail.html', {'topic': topic, 'form': form})
+    return render(request, 'forum/topic_detail.html', {'topic': topic, 'form': form, 'section': section, 'sectionTopic': sectionTopic})
 
 
 @login_required
@@ -96,3 +113,5 @@ def your_view(request):
         # redirige vers une autre vue ou renvoie une réponse
         return redirect('account')
     return render(request, 'changeprofile.html')
+
+

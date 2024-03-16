@@ -54,7 +54,7 @@ urlpatterns = [
     path('section/PHYSICS/', forum.views.PHYSICS, name='PHYS-section'),
     path('section/MEDECINE/', forum.views.MEDECINE, name='MEDECINE-section'),
     path('section/SOCIOLOGY/', forum.views.SOCIOLOGY, name='SOCIOLOGY-section'),
-    path('section/miscellaneous_topics/', forum.views.miscellaneous_topics, name='miscellaneous-topics'),
+    path('section/Miscellaneous/', forum.views.miscellaneous_topics, name='miscellaneous-topics'),
     
     #create a new forum topic   
     path('new-topic/', forum.views.new_ftopic, name='create-ftopic'),

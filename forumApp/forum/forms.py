@@ -13,6 +13,19 @@ class FollowUsersForm(forms.ModelForm):
         fields = ['follows']
 """
 class CreateTopicForm(forms.ModelForm):
+    title = forms.CharField(
+        max_length=255,
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the title here...'})
+    )
+    
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={'rows': 5, 'placeholder': 'Enter the description here...'})
+    )
+    
+    section = forms.ChoiceField(
+        choices=Topic.SECTION_CHOICES,
+        widget=forms.Select(attrs={'class': 'section-select'})
+    )
     class Meta:
         model = Topic
         fields = ['title', 'description', 'section'] 
